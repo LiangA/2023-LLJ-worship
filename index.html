@@ -24,10 +24,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3" id="image-container">
-                <img id="displayed-image" src="" alt="Christian Image">
-                <br>
-                <button class="btn btn-primary mt-3 btn-block" onclick="fetchRandomImage()">抽取</button>
-                <a id="download-link" class="btn btn-success mt-3 btn-block" style="display: none" download="christian_image.jpg">下載</a>
+                <img id="displayed-image" src="cover.jpg" alt="箴言卡"">
+                <!-- <br> -->
+                <button id="draw-button" class="btn btn-primary mt-3 btn-block" onclick="fetchRandomImage()">抽取</button>
+                <a id="download-link" class="btn btn-success mt-3 btn-block" style="display: none" download="christian_image.jpg">下載箴言卡</a>
             </div>
         </div>
     </div>
@@ -35,12 +35,14 @@
     <script>
         const imageContainer = document.getElementById('image-container');
         const displayedImage = document.getElementById('displayed-image');
+        const drawButton = document.getElementById('draw-button');
         const downloadLink = document.getElementById('download-link');
 
         function fetchRandomImage() {
             const randomNumber = Math.floor(Math.random() * 37);
             const imageUrl = `assets/${randomNumber}.png`;
             displayedImage.src = imageUrl;
+            drawButton.remove();
             downloadLink.href = imageUrl;
             downloadLink.style.display = 'block';
         }
